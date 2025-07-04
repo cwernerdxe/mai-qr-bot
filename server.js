@@ -1,6 +1,19 @@
-// server.js
+const express = require('express');
 const { create } = require('venom-bot');
+const app = express();
 
+const PORT = process.env.PORT || 3000;
+
+// Mini servidor HTTP para evitar el error 502 en Railway
+app.get('/', (req, res) => {
+  res.send('✅ MAI QR Bot está corriendo.');
+});
+
+app.listen(PORT, () => {
+  console.log(`🌐 Servidor escuchando en puerto ${PORT}`);
+});
+
+// Bot de WhatsApp
 create({
   session: 'mai-qr-bot'
 })
